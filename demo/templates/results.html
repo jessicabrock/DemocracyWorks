@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>{% block title %}TITLE GOES HERE{% endblock %}</title>
+      <link rel="stylesheet" href="static/styles.css"/>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+
+<body>
+  <div class="container">
+      <h1 id="logo">Democracy Works </h1>
+      <h2>Results page</h2>
+      <a href="/form">Check again></a>
+      <hr />
+    <!-- This is where the main content goes. -->
+    {% block content %}
+        {% if items["error"] %}
+            <h2>No Elections Found</h2>
+        {% else %}
+        <section class="content">
+            <ul id="items">
+                <h2>Election description:</h2>
+                {{ items["i_desc"] }}
+                
+                <h2>Election date:</h2>
+                {{ items["i_date"] }}
+                
+                <h2>State short code:</h2>
+                {{ items["i_state"] }}
+                
+                <h2>Voting methods:</h2>
+                {{ items["i_vote_meth"] }}
+                
+                <h2>Deadline postmarked:</h2>
+                {{ items["i_date_pm"] }}
+                        
+                <h2>Polling Place short Url:</h2>
+                <a href="{{ items['i_place_url'] }}">{{ items["i_place_url"] }}</a>
+            </ul>
+        </section>
+        {% endif %}
+    {% endblock %}
+  </div>
+</body>
+</html>
